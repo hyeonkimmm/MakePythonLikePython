@@ -1,0 +1,47 @@
+logo
+프로그래밍 강의
+파이썬을 파이썬답게
+2차원 리스트를 1차원 리스트로 만들기 - from_iterable
+강의노트
+질문 (7)
+2차원 리스트를 1차원 리스트로 만들기 - from_iterable
+코딩을 하다보면, 이차원 리스트를 일차원 리스트로 만들어야 할 때가 있습니다. 이럴 땐 어떻게 하시나요?
+
+다른 언어에서는..(또는 이 기능을 모르시는 분은)
+보통 사람들은 반복문을 이용해 리스트를 더해갑니다.
+
+my_list = [[1, 2], [3, 4], [5, 6]]
+answer = []
+for i in my_list:
+    answer += i
+파이썬에서는
+파이썬의 다양한 기능을 사용하면, for 문을 사용하지 않고도 리스트를 이어붙일 수 있습니다.
+
+my_list = [[1, 2], [3, 4], [5, 6]]
+
+# 방법 1 - sum 함수
+answer = sum(my_list, [])
+
+# 방법 2 - itertools.chain
+import itertools
+list(itertools.chain.from_iterable(my_list))
+
+# 방법 3 - itertools와 unpacking
+import itertools
+list(itertools.chain(*my_list))
+
+# 방법4 - list comprehension 이용
+[element for array in my_list for element in array]
+
+# 방법 5 - reduce 함수 이용1
+from functools import reduce
+list(reduce(lambda x, y: x+y, my_list))
+
+# 방법 6 - reduce 함수 이용2
+from functools import reduce
+import operator
+list(reduce(operator.add, my_list))
+
+# 방법 7 - numpy 라이브러리의 flatten 이용
+import numpy as np
+np.array(my_list).flatten().tolist()
