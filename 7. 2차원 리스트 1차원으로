@@ -21,6 +21,8 @@ my_list = [[1, 2], [3, 4], [5, 6]]
 
 # 방법 1 - sum 함수
 answer = sum(my_list, [])
+sum(iterable, start=(default = 0))
+iterable 객체를 왼쪽에서 오른쪽까지 더하고 start랑 더한 값을 내보내 주는 느낌임
 
 # 방법 2 - itertools.chain
 import itertools
